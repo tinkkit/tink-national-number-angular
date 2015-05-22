@@ -39,7 +39,8 @@ Tink is an in-house developed easy-to-use front-end framework for quick prototyp
 
 ```html
 <tink-national-number required="required" name="nationalNoField" data-ng-model="nationalNoModel"></tink-national-number>
-`
+```
+
 ###Example
 
 ###### Possible validation code: ######
