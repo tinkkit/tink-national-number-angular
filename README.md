@@ -73,6 +73,12 @@ Tink is an in-house developed easy-to-use front-end framework for quick prototyp
 </div>
 ```
 
+### Options
+
+Attr | Type | Default | Details
+--- | --- | --- | ---
+data-ng-model (required) | `[object]` | `[]` | This variable holds the preformatted text.
+
 ## Contribution guidelines
 
 * If you're not sure, drop us a note
