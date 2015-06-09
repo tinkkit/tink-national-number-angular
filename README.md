@@ -1,6 +1,6 @@
 # Tink national number Angular directive
 
-v1.0.0
+v1.0.1
 
 ## What is this repository for?
 
@@ -18,14 +18,19 @@ Tink is an in-house developed easy-to-use front-end framework for quick prototyp
 ### Install
 
 1. Go to the root of your project and type the following command in your terminal:
-
-  `bower install tink-national-number-angular --save`
+   `bower install tink-national-number-angular --save`
 
 2. Add the following files to your project:
 
   `<link rel="stylesheet" href="bower_components/tink-core/dist/tink.css" />` (or one of the Tink themes)
 
   `<script src="bower_components/tink-national-number-angular/dist/tink-national-number-angular.js"></script>`
+
+3. Add `tink.nationalnumber` to your app module's dependency.
+
+  `angular.module('myApp', ['tink.nationalnumber']);`
+
+4. On http://tink.digipolis.be you will find all necessary documentation.
 
 
 ----------
@@ -39,38 +44,6 @@ Tink is an in-house developed easy-to-use front-end framework for quick prototyp
 
 ```html
 <tink-national-number required="required" name="nationalNoField" data-ng-model="nationalNoModel"></tink-national-number>
-```
-
-###Example
-
-###### Possible validation code: ######
-
-```html
-<div class="container" data-ng-controller="nationalNoCtrl">
-  <form name="nationalNoForm" novalidate="">
-    <div class="row form-group" data-ng-class="{'has-error':(nationalNoForm.nationalNoField.$dirty || nationalNoForm.submitted) && nationalNoForm.nationalNoField.$invalid,'has-success': (nationalNoForm.nationalNoField.$dirty || nationalNoForm.submitted) && nationalNoForm.nationalNoField.$valid}">
-      <div class="col-xs-12">
-        <label for="tink-username-example">National number</label>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="validation">
-          <tink-national-number required="required" name="nationalNoField" data-ng-model="nationalNoModel"></tink-national-number>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-sm-offset-2">
-        <div class="messages" data-ng-messages="nationalNoForm.nationalNoField.$error" data-ng-if="(nationalNoForm.nationalNoField.$dirty || nationalNoForm.submitted)">
-          <div class="text-danger" data-ng-message="required">Fill in your national number.</div>
-          <div class="text-danger" data-ng-message="format">Fill in a valid national number.</div>
-        </div>
-      </div>
-    </div>
-    <div class="row form-group">
-      <div class="col-xs-12">
-        <button data-ng-click="validateNationalNo()" type="button" class="btn-primary">Validate</button>
-      </div>
-    </div>
-  </form>
-</div>
 ```
 
 ### Options
