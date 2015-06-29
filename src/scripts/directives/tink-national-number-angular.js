@@ -3,7 +3,7 @@
   try {
     module = angular.module('tink.nationalnumber');
   } catch (e) {
-    module = angular.module('tink.nationalnumber', ['tink.safeApply','tink.formathelper']);
+    module = angular.module('tink.nationalnumber', ['tink.safeApply','tink.formathelper','ngMessages']);
   }
   module.directive('tinkNationalNumber',['$window','safeApply',function($window,safeApply){
      return {
@@ -70,13 +70,14 @@
             }else{
               value = controller.getValue();
             }
-            checkvalidty(value);
+            
               if(isRRNoValid(value)){
                 ngControl.$setViewValue(value);
                 ngControl.$render();
               }else{
                  ngControl.$setViewValue(null);
               }
+              checkvalidty(value);
               /*if(value === 'xx.xx.xx-xxx.xx' || value === ''){
                 ngControl.$setViewValue(null);
               }*/
