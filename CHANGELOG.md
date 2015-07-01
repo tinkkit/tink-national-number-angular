@@ -15,6 +15,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 -->
 
 
+## [1.0.4] - 2015-07-1
+
+### Removed
+- removed ngmessages module
+
+## [1.0.3] - 2015-06-30
+
+### Changed
+- the way it checks the valdity
 
 ## [1.0.2] - 2015-06-10
 

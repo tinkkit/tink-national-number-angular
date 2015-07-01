@@ -1,6 +1,6 @@
 # Tink national number Angular directive
 
-v1.0.3
+v1.0.4
 
 ## What is this repository for?
 
