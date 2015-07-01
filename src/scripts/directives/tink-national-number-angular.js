@@ -3,7 +3,7 @@
   try {
     module = angular.module('tink.nationalnumber');
   } catch (e) {
-    module = angular.module('tink.nationalnumber', ['tink.safeApply','tink.formathelper','ngMessages']);
+    module = angular.module('tink.nationalnumber', ['tink.safeApply','tink.formathelper']);
   }
   module.directive('tinkNationalNumber',['$window','safeApply',function($window,safeApply){
      return {
