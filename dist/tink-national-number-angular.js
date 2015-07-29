@@ -9,7 +9,9 @@
      return {
       restrict:'AE',
       controller:'tinkFormatController',
+      controllerAs:'ctrl',
       require:['tinkNationalNumber','ngModel','?^form'],
+      scope:{},
       template: function() {
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
         var isTouch = ('createTouch' in $window.document) && isNative;
@@ -127,7 +129,6 @@
           }
 
          function checkvalidty(value){
-
           if(value === config.placeholder || value === '' || value === null || value === undefined){
             ngControl.$setValidity('format',true);
           }else{
