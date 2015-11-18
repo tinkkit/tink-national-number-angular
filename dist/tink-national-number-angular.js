@@ -11,18 +11,19 @@
       controller:'tinkFormatController',
       controllerAs:'ctrl',
       require:['tinkNationalNumber','ngModel','?^form'],
-      scope:{},
+      scope:{
+        isDisabled:'=?'
+      },
       template: function() {
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
         var isTouch = ('createTouch' in $window.document) && isNative;
         if (isTouch) {
           return '<div><input class="hide-styling" type="text"><div>';
         } else {
-          return '<div tabindex="-1"><div id="input" class="faux-input" contenteditable="true">{{placeholder}}</div></div>';
+          return '<div><div id="input" class="faux-input" contenteditable="true">{{placeholder}}</div></div>';
         }
       },
       link:function(scope,elm,attr,ctrl){
-        elm.attr('tabindex','-1');
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
         var isTouch = ('createTouch' in $window.document) && isNative;
         var controller = ctrl[0];

@@ -1,14 +1,15 @@
 {
   "name": "tink-national-number-angular",
   "description": "Tink national number Angular directive",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "repository": {
     "type": "git",
     "url": "git@github.com:tinkkit/tink-national-number-angular.git"
   },
   "dependencies": {
     "bower": "^1.3.12",
-    "grunt-cli": "^0.1.13"
+    "grunt-cli": "^0.1.13",
+    "grunt-sass": "^1.1.0"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
