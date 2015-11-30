@@ -17,7 +17,7 @@
       },
       template: function() {
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
-        var isTouch = ('createTouch' in $window.document) && isNative;
+        var isTouch = false && ('createTouch' in $window.document) && isNative;
         if (isTouch) {
           return '<div><input class="hide-styling" type="text"><div>';
         } else {
@@ -26,7 +26,7 @@
       },
       link:function(scope,elm,attr,ctrl){
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
-        var isTouch = ('createTouch' in $window.document) && isNative;
+        var isTouch = false && ('createTouch' in $window.document) && isNative;
         var controller = ctrl[0];
         var form = ctrl[2];
         var ngControl = ctrl[1];
@@ -172,4 +172,4 @@
       }
     };
   }]);
-})();
+})();;
