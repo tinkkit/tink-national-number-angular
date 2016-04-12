@@ -33,7 +33,7 @@
         var element = elm.find('div>:first');
         //variable
         var config = {
-          format: '00.00.00-000.00',
+          format: '00\\.00\\.00-000\\.00',
           placeholder: 'xx.xx.xx-xxx.xx'
         };
 
