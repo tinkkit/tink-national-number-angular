@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/tink-helper-safe-apply-angular/dist/tink-helper-safe-apply-angular.js',
       'bower_components/tink-helper-format-angular/dist/tink-helper-format-angular.js',
       'bower_components/angular-messages/angular-messages.js',
+      "bower_components/randexp/build/randexp.min.js",
       'src/scripts/{,*/}*.js',
       'src/{,*/}',
       'test/mock/{,*/}*.js',
