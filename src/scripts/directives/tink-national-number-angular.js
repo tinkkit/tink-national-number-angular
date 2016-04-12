@@ -5,18 +5,19 @@
   } catch (e) {
     module = angular.module('tink.nationalnumber', ['tink.safeApply','tink.formathelper']);
   }
-  module.directive('tinkNationalNumber',['$window','safeApply',function($window,safeApply){
+  module.directive('tinkNationalNumber',['$window','safeApply','$timeout',function($window,safeApply,$setimeout){
      return {
       restrict:'AE',
       controller:'tinkFormatController',
       controllerAs:'ctrl',
       require:['tinkNationalNumber','ngModel','?^form'],
       scope:{
-        isDisabled:'=?'
+        isDisabled:'=?',
+        ngModel:'='
       },
       template: function() {
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
-        var isTouch = ('createTouch' in $window.document) && isNative;
+        var isTouch = false && ('createTouch' in $window.document) && isNative;
         if (isTouch) {
           return '<div><input class="hide-styling" type="text"><div>';
         } else {
@@ -25,14 +26,14 @@
       },
       link:function(scope,elm,attr,ctrl){
         var isNative = /(ip(a|o)d|iphone|android)/ig.test($window.navigator.userAgent);
-        var isTouch = ('createTouch' in $window.document) && isNative;
+        var isTouch = false && ('createTouch' in $window.document) && isNative;
         var controller = ctrl[0];
         var form = ctrl[2];
         var ngControl = ctrl[1];
         var element = elm.find('div>:first');
         //variable
         var config = {
-          format: '00.00.00-000.00',
+          format: '00\\.00\\.00-000\\.00',
           placeholder: 'xx.xx.xx-xxx.xx'
         };
 
@@ -77,8 +78,11 @@
               if(isRRNoValid(value)){
                 ngControl.$setViewValue(value);
                 ngControl.$render();
+                //ngControl.$setPristine();
               }else{
-                 ngControl.$setViewValue(null);
+                 ngControl.$setViewValue();
+                // scope.ngModel = null;
+                 //ngControl.$setPristine(true);
               }
               checkvalidty(value);
               /*if(value === 'xx.xx.xx-xxx.xx' || value === ''){
@@ -86,6 +90,22 @@
               }*/
           });
         });
+
+        elm.bind('focus',function(){
+          element.focus();
+        });
+
+        var prevValue;
+        element.bind('valueChanged', function (e, val) {
+            //We put this in a safeaply because we are out of the angular scope !
+            safeApply(scope, function () {
+              //Check if the date we received is a valid date.
+              if(ctrl[1] && prevValue !== val){
+                ctrl[1].$setDirty();
+              }
+              prevValue = val;
+            });
+          });
 
          var isRequired = (function(){
             if(attr.required === 'true' || attr.required === '' || attr.required === 'required'){
